@@ -8,7 +8,7 @@ GIFTS = []
 wrapping = 0
 ribbon = 0
 
-with open("/storage/emulated/0/documents/adventorcode/2015/day_2_input.txt", 'r') as F:
+with open("day_2_input.txt", 'r') as F:
     temp = []
     for line in F:
         for v in line.split("x"):
