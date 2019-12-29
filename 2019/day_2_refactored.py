@@ -32,7 +32,7 @@ pg3 = [2,3,0,3,99]
 pg4 = [2,4,4,5,99,0]
 pg5 = [1,1,1,4,99,5,6,0,99]
 
-mem = []
+mem = [] #memory
 
 test = list(orig_OPCODES)
 
