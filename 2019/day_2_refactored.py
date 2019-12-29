@@ -147,7 +147,7 @@ def init(pg):
     global mem
     index = 0
     op_index = 0
-    for n in pg:
+    for _ in pg:
         if index == 0 or index == op_index:
             tmp = str(pg[index]).zfill(4)
             if tmp[2:] in one_op_opcodes:
@@ -164,8 +164,8 @@ def init(pg):
 
 def prg(oc, i):
     index = i
-    programm_running = True
-    while programm_running == True:
+    program_running = True
+    while program_running == True:
         if oc[index] == 99:
             program_running = False
             break
@@ -279,7 +279,6 @@ if __name__ == "__main__":
             elif res[0] == result:
                 calc = 100*noun+verb
                 print(calc)   #day2 part 2
-                break
                 break
             else:
                 test = list(orig_OPCODES)
