@@ -2,6 +2,7 @@
 Day 2. Help finding valid passwords.
 Part 1: Find number of valid passwords in input list, based on first rule set.
 Part 2: Find number of valid passwords, based on updated rule set.
+Does this work???
 '''
 
 wd = 'C:\\Users\\dksojlg\\projects\\AdventOfCode\\2020'
