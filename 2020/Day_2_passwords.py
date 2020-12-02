@@ -22,7 +22,7 @@ with open(wd+'\\passwords.txt', 'r') as ER:
         nn, ins, psw = item.split(" ")
         psw = psw.strip("\n")
         minimum, maximum = nn.split("-")
-        instance = str(ins[0])
+        instance = ins.strip(':')
         if int(minimum) <= psw.count(instance) <= int(maximum):
             valid_passwords.append(psw)
 
@@ -45,7 +45,7 @@ with open(wd+'\\passwords.txt', 'r') as ER:
         nn, ins, psw = item.split(" ")
         psw = psw.strip("\n")
         index_1, index_2 = nn.split("-")
-        instance = str(ins[0])
+        instance = ins.strip(':')
         if bool(psw[int(index_1)-1] == instance) ^ bool(psw[int(index_2)-1] == instance):
             valid_passwords.append(psw)
 
