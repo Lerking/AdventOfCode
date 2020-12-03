@@ -21,12 +21,29 @@ def traverse(right, down):
             trees += 1
     return trees
 
+'''
+Part 1
+Traject right 3, down 1
+'''
+print(f'Part 1 - Number of trees encountered : {traverse(3,1)}')
+
+'''
+Part 2
+Trajections:
+right 1, down 1
+right 3, down 1
+right 5, down 1
+right 7, down 1
+right 1, down 2
+multiply encountered trees in all trajections.
+'''
+
 trees = 1
 
 trees *= traverse(1,1)
-trees *= traverse(3,1) #Part 1
+trees *= traverse(3,1)
 trees *= traverse(5,1)
 trees *= traverse(7,1)
 trees *= traverse(1,2)
 
-print(trees)
+print(f'Part 2 - Multiplied number of encountered trees : {trees}')
