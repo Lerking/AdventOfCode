@@ -18,8 +18,8 @@ def traverse(right, down):
         if col > line_len-1: # If col is larger than the lenght of the map line
             col = col % line_len # We re-calculate the col index as modulo col/line length (this gives us the remainder, which is our new col index)
         if tree_map[line][col] == '#': # If we encounter a tree, represented as '#' in the map
-            trees += 1 # We increase the number of trees we have encounted
-    return trees # When the end of the map has been reached, we return the number of trees encounted
+            trees += 1 # We increase the number of trees we have encountered
+    return trees # When the end of the map has been reached, we return the number of trees encountered
 
 '''
 Part 1
