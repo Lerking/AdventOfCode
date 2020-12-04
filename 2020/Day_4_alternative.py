@@ -51,7 +51,7 @@ def fieldValid(name, value):
 if __name__ == '__main__':
     wd = 'C:\\Users\\dksojlg\\projects\\AdventOfCode\\2020'
 
-    with open(wd+"\\passports.txt", "r") as f:
+    with open("/home/jan/projects/AdventOfCode/2020/passports.txt", "r") as f:
         passports = [parse(fields) for fields in f.read().split('\n\n')]
 
     print("Part one:", sum(passportComplete(p) for p in passports))

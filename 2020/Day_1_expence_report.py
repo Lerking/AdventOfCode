@@ -7,9 +7,10 @@ Then multiply these 3 numbers, to get the expence report result.
 '''
 
 expence_report = []
-wd = 'C:\\Users\\dksojlg\\projects\\AdventOfCode\\2020'
+#wd = 'C:\\Users\\dksojlg\\projects\\AdventOfCode\\2020'
+wd = '/home/jan/projects/AdventOfCode/2020'
 
-with open(wd+'\\expence_report.txt', 'r') as ER:
+with open(wd+'/expence_report.txt', 'r') as ER:
     for item in ER:
         expence_report.append(int(item))
 

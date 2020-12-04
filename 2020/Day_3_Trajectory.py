@@ -2,7 +2,7 @@
 tree_map = []
 wd = 'C:\\Users\\dksojlg\\projects\\AdventOfCode\\2020'
 
-with open(wd+'\\tree_map.txt', 'r') as ER:
+with open('/home/jan/projects/AdventOfCode/2020/tree_map.txt', 'r') as ER:
     for item in ER:
         tree_map.append(item.strip('\n'))
 

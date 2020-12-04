@@ -16,7 +16,7 @@ test_data = ['ecl:gry pid:860033327 eyr:2020 hcl:#fffffd\n',
 
 wd = 'C:\\Users\\dksojlg\\projects\\AdventOfCode\\2020'
 
-with open(wd+'\\passports.txt', 'r') as ER:
+with open('/home/jan/projects/AdventOfCode/2020/passports.txt', 'r') as ER:
     passports = []
     passport = {}
     for item in ER:
@@ -35,57 +35,28 @@ print(f'Number of valid passports : {len(valids)}')
 valid = 0
 new_valids = []
 for v in valids:
-    if not 1920 <= int(v['byr']) <= 2020:
+    if not 1920 <= int(v['byr']) <= 2002:
         continue
     if not 2010 <= int(v['iyr']) <= 2020:
         continue
     if not 2020 <= int(v['eyr']) <= 2030:
         continue
-    if not v['ecl'] in ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']:
+    if not re.match('[amb|blu|brn|gry|grn|hzl|oth]', v['ecl']):
         continue
-    if not v['hcl'].startswith('#') \
-        and not all(c in '0123456789abcdef' for c in v['hcl'][1:]) \
-        and not len(v['hcl']) == 7:
+    if not re.match('^#[0-9a-f]{6}', v['hcl']):
         continue
-    if not all(d in '0123456789' for d in v['pid']) \
-        and not len(v['pid']) == 9:
+    if not len(v['pid']) == 9 or not re.match('[0-9]{9}', v['pid']):
+        continue
+    if not v['hgt'].endswith('in') and not v['hgt'].endswith('cm'):
         continue
     if v['hgt'].endswith('in'):
         heads, tail = v['hgt'].rsplit('in')
-        if not 59 <= int(heads) <= 76:
+        if not len(v['hgt']) == 4 or not 59 <= int(heads) <= 76:
             continue
     if v['hgt'].endswith('cm'):
         heads, tail = v['hgt'].rsplit('cm')
-        if not 150 <= int(heads) <= 193:
+        if not len(v['hgt']) == 5 or not 150 <= int(heads) <= 193:
             continue
     valid += 1
     new_valids.append(v)
-        
-all = [f for f in valids if all(f in valids for k in ['byr', 'iyr', 'eyr', 'pid', 'ecl', 'hcl', 'hgt'])]
-byr_valids = [v for v in valids if 1920 <= int(v['byr']) <= 2002]
-print(len(byr_valids))
-iyr_valids = [v for v in byr_valids if 2010 <= int(v['iyr']) <= 2020]
-print(len(iyr_valids))
-eyr_valids = [v for v in iyr_valids if 2020 <= int(v['eyr']) <= 2030]
-print(len(eyr_valids))
-ecl_valids = [v for v in eyr_valids if v['ecl'] in ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']]
-print(len(ecl_valids))
-hcl_valids = [v for v in ecl_valids if re.match('^#[0-9a-f]{6}$', v['hcl'])]
-print(hcl_valids)
-print(len(hcl_valids))
-pid_valids = [v for v in hcl_valids if re.match('[0-9]{9}', v['pid'])]
-print(len(pid_valids))
-dat = [v['hgt'] for v in pid_valids]
-print(len(dat))
-print(dat)
-hgt_valids = 0
-for elm in dat:
-    if elm.endswith('in'):
-        heads, tail = elm.rsplit('in')
-        if 59 <= int(heads) <= 76:
-            hgt_valids += 1
-    if elm.endswith('cm'):
-        heads, tail = elm.rsplit('cm')
-        if 150 <= int(heads) <= 193:
-            hgt_valids += 1
-print(hgt_valids)
+print(len(new_valids))

@@ -18,7 +18,7 @@ part 1, indicates lowest and highest number of instances (1-3).
 part 2, the instance (a:).
 part 3, the password (abcde).
 '''
-with open(wd+'\\passwords.txt', 'r') as ER:
+with open('/home/jan/projects/AdventOfCode/2020/passwords.txt', 'r') as ER:
     for item in ER:
         nn, ins, psw = item.split(" ")
         psw = psw.strip("\n")
@@ -41,7 +41,7 @@ part 2, the instance (a:).
 part 3, the password (abcde).
 '''
 valid_passwords = []
-with open(wd+'\\passwords.txt', 'r') as ER:
+with open('/home/jan/projects/AdventOfCode/2020/passwords.txt', 'r') as ER:
     for item in ER:
         nn, ins, psw = item.split(" ")
         psw = psw.strip("\n")
