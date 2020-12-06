@@ -48,3 +48,14 @@ for bp in boarding_passes:
     result.append(read_boarding_pass(bp))
 
 print(f'Part 1: {max([id[3] for id in result])}')
+
+data = sorted([id[3] for id in result])
+
+index = 0
+for x in data:
+    if index == 0:
+        index += 1
+        continue
+    if data[index-1] == x-2:
+        print(f'Part 2: {x-1}')
+    index += 1
