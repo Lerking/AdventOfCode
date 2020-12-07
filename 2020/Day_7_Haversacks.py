@@ -77,8 +77,8 @@ def bag_contents(tst, bag):
                 cnt += b[1][c] * bag_contents(tst, c) #Add value of child bag name key times count of next level for child bag name
     return cnt #Return count of current child bag name
 
-cnt = bag_contents(test, 'shiny_gold') #Store final count of recurring child bag names fro test input
+cnt = bag_contents(test, 'shiny_gold') #Store final count of recursively traversing child bag names fro test input
 print(f'Part 2 test: {cnt}')
 
-cnt = bag_contents(data, 'shiny_gold') #Store final count of recurring child bag names fro real input
+cnt = bag_contents(data, 'shiny_gold') #Store final count of recursively traversing child bag names fro real input
 print(f'Part 2: {cnt}')
