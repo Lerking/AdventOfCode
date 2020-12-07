@@ -67,3 +67,18 @@ print(f'Part 1 test: {len(bag_count(test, "shiny_gold"))}')
 data = read_rules(haversacks)
 lst = set(bag_count(data, "shiny_gold"))
 print(f'Part 1: {len(lst)}')
+
+def bag_contents(tst, bag):
+    cnt = 0
+    for b in tst:
+        if b[0] == bag:
+            cnt += sum(b[1].values())
+            for c in list(b[1].keys()):
+                cnt += b[1][c] * bag_contents(tst, c)
+    return cnt
+
+cnt = bag_contents(test, 'shiny_gold')
+print(f'Part 2 test: {cnt}')
+
+cnt = bag_contents(data, 'shiny_gold')
+print(f'Part 2: {cnt}')
