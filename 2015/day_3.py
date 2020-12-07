@@ -1,28 +1,38 @@
-import math
-    
-DIRECT = []
+wd = '/home/jan/projects/AdventOfCode/2015'
 
-with open("/storage/emulated/0/documents/adventorcode/2015/day_3_input.txt", 'r') as F:
+x = 0
+y = 0
+houses = [] 
+houses.append([x, y, 1])
+
+def next_house(dir):
+    global x, y
+    global houses
+    temp = []
+    index = 0
+    if dir == '<':
+        x -= 1
+    if dir == '>':
+        x += 1
+    if dir == 'v':
+        y -= 1
+    if dir == '^':
+        y += 1
+    for ch in houses:
+        if ch[0] == x and ch[1] == y:
+            houses[index][2] += 1
+            return
+        index += 1
+    temp.append(x)
+    temp.append(y)
+    temp.append(1)
+    houses.append(temp)
+
+with open(wd+"/day_3_input.txt", 'r') as F:
     for l in F:
         for d in l:
-            DIRECT.append(d)
+            next_house(d)
+cnt = [p[2] for p in houses if p[2] >= 1]
 
-print(DIRECT)
-print(len(DIRECT))
-
-GRID = []
-index = 0
-temp = []
-for y in range(int(math.sqrt(len(DIRECT)))):
-    for x in range(int(math.sqrt(len(DIRECT)))):
-        temp.append(index)
-        index += 1
-    GRID.append(temp)
-    temp = []
+print(f'Part 1: {len(cnt)}')
     
-print(GRID)
-
-VISITS = {}
-pos_x = int(math.sqrt(len(DIRECT))/2)
-pos_y = pos_x
-print(pos_x, pos_y)
