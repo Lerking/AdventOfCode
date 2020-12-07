@@ -36,3 +36,4 @@ cnt = [p[2] for p in houses if p[2] >= 1]
 
 print(f'Part 1: {len(cnt)}')
     
+print(f'Part 1 alternative: {len(houses)}')
