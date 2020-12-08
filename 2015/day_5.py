@@ -37,6 +37,16 @@ with open(wd+"/naughty_list.txt", 'r') as F:
     for l in F:
         input_list.append(l.strip('\n'))
 
+nice_list = []
+naughty_list = []
+
+for s in input_list:
+    string_nice(s)
+
+print("Part 1:")
+print(f'Nice strings: {len(nice_list)}')
+print(f'Naughty strings: {len(naughty_list)}')
+
 new_strings = ['qjhvhtzxzqqjkmpb', 'xxyxx', 'uurcxstgmygtbstg', 'ieodomkazucvgmuy']
 nice_list = []
 naughty_list = []
