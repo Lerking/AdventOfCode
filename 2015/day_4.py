@@ -3,8 +3,7 @@ test_input = ['abcdef', 'pqrstuv']
 
 for t in test_input:
     index = 0
-    result = hashlib.md5(str(t+str(index)).encode())
-    digest = result.hexdigest()
+    digest = hashlib.md5(str(t+str(index)).encode()).hexdigest()
 
     while digest[:5] != "00000":
         index += 1
@@ -16,8 +15,7 @@ for t in test_input:
 input = 'bgvyzdsv'
 
 index = 0
-result = hashlib.md5(str(input+str(index)).encode())
-digest = result.hexdigest()
+digest = hashlib.md5(str(input+str(index)).encode()).hexdigest()
 
 while digest[:5] != "00000":
     index += 1
