@@ -33,23 +33,17 @@ def get_fault(preample, dat):
 
 def weakness(fault, dat):
     tmp = []
-    length = 0
-    summary = 0
     for n in dat:
-        if summary == fault:
+        if sum(tmp) == fault:
             return min(tmp)+max(tmp)
         tmp.append(n)
-        length = len(tmp)
-        summary = sum(tmp)
-        if length < 3:
+        if len(tmp) < 3:
             continue
-        elif summary < fault:
+        elif sum(tmp) < fault:
             continue
         else:
-            while summary > fault:
+            while sum(tmp) > fault:
                 tmp.pop(0)
-                length = len(tmp)
-                summary = sum(tmp)
 
 print(f'Part 1 test: {get_fault(5, test_data)}')
 
