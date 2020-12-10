@@ -1,6 +1,6 @@
 wd = '/home/jan/projects/AdventOfCode/2015'
 
-grid = [[False]*1000]*1000
+grid = [[0]*1000]*1000
 
 lights = []
 
@@ -23,30 +23,35 @@ def lights_on(start_row, start_col, end_row, end_col):
     global grid
     for row in range(start_row, end_row+1):
         for col in range(start_col, end_col+1):
-            grid[row][col] = True
+            grid[row][col] = 1
 
 def lights_off(start_row, start_col, end_row, end_col):
     global grid
     for row in range(start_row, end_row+1):
         for col in range(start_col, end_col+1):
-            grid[row][col] = False
+            grid[row][col] = 0
 
 def lights_toggle(start_row, start_col, end_row, end_col):
     global grid
     for row in range(start_row, end_row+1):
         for col in range(start_col, end_col+1):
-            v = grid[row][col]
-            grid[row][col] = not(v)
+            if grid[row][col] == 0:
+                grid[row][col] = 1
+            elif grid[row][col] == 1:
+                grid[row][col] = 0
 
 for i in lights:
     if i[0] == 'on':
-        lights_on(i[1], i[2], i[3], i[4])
+        lights_on(i[2], i[1], i[4], i[3])
         continue
     if i[0] == 'off':
-        lights_off(i[1], i[2], i[3], i[4])
+        lights_off(i[2], i[1], i[4], i[3])
         continue
     if i[0] == 'toggle':
-        lights_toggle(i[1], i[2], i[3], i[4])
+        lights_toggle(i[2], i[1], i[4], i[3])
         continue
 
-print(f'Part 1 lights on: {sum(x.count(True) for x in grid)}')
+x = 0
+for l in grid:
+    x += l.count(True)
+print(f'Part 1 lights on: {x}')
