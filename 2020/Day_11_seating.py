@@ -1,5 +1,14 @@
 from collections import Counter
 
+with open('seats_test.txt', 'r') as S:
+    rows_test = [l.strip() for l in S.readlines()]
+
+seats_test = []
+for r in rows_test:
+    lst = []
+    lst[:0]=r
+    seats_test.append(lst)
+
 with open('seats.txt', 'r') as S:
     rows = [l.strip() for l in S.readlines()]
 
@@ -73,6 +82,8 @@ def seat_arr(sa):
     else:
         seat_arr(seata)
 
-seat_arr(seats)
+seat_arr(seats_test)
+print(f"Part 1 test: {sum(x.count('#') for x in seat_arrangement)}")
 
+seat_arr(seats)
 print(f"Part 1: {sum(x.count('#') for x in seat_arrangement)}")
