@@ -1,4 +1,4 @@
-from collections import Counter
+import copy
 
 with open('seats_test.txt', 'r') as S:
     rows_test = [l.strip() for l in S.readlines()]
@@ -82,8 +82,54 @@ def seat_arr(sa):
     else:
         seat_arr(seata)
 
-seat_arr(seats_test)
+#seat_arr(seats_test)
+#print(f"Part 1 test: {sum(x.count('#') for x in seat_arrangement)}")
+
+#seat_arr(seats)
+#print(f"Part 1: {sum(x.count('#') for x in seat_arrangement)}")
+
+directions = {'w': [-1, 0], 'nw': [-1, -1], 'n': [0, -1], 'ne': [1, -1], 'e': [1, 0], 'se': [1, 1], 's': [0, 1], 'sw': [-1, 1]}
+
+def new_seat_arr(sa):
+    global seat_arrangement
+    seata = copy.deepcopy(sa)
+    for ri, r in enumerate(sa):
+        for si, s in enumerate(r):
+            occ = 0
+            if s == '.':
+                continue
+            for direct in directions:
+                if occ == 5:
+                    break
+                tsi, tri = directions[direct]
+                test_r = ri + tri
+                test_s = si + tsi
+                while 0 <= test_r <= len(sa)-1 and 0 <= test_s <= len(r)-1:
+                    if sa[test_r][test_s] == 'L':
+                        break
+                    elif sa[test_r][test_s] == '#':
+                        occ += 1
+                        break
+                    test_r += tri
+                    test_s += tsi
+            if s == '#' and occ < 5:
+                continue
+            elif s == '#' and occ == 5:
+                seata[ri][si] = 'L'
+                continue
+            elif s == 'L' and occ == 0:
+                seata[ri][si] = '#'
+                continue
+            elif s == 'L' and occ > 0:
+                continue
+    if seata == sa:
+        seat_arrangement = seata
+        return
+    else:
+        new_seat_arr(seata)
+
+new_seat_arr(seats_test)
 print(f"Part 1 test: {sum(x.count('#') for x in seat_arrangement)}")
 
-seat_arr(seats)
+new_seat_arr(seats)
 print(f"Part 1: {sum(x.count('#') for x in seat_arrangement)}")
