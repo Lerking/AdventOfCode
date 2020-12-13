@@ -82,11 +82,11 @@ def seat_arr(sa):
     else:
         seat_arr(seata)
 
-#seat_arr(seats_test)
-#print(f"Part 1 test: {sum(x.count('#') for x in seat_arrangement)}")
+seat_arr(seats_test)
+print(f"Part 1 test: {sum(x.count('#') for x in seat_arrangement)}")
 
-#seat_arr(seats)
-#print(f"Part 1: {sum(x.count('#') for x in seat_arrangement)}")
+seat_arr(seats)
+print(f"Part 1: {sum(x.count('#') for x in seat_arrangement)}")
 
 directions = {'w': [-1, 0], 'nw': [-1, -1], 'n': [0, -1], 'ne': [1, -1], 'e': [1, 0], 'se': [1, 1], 's': [0, 1], 'sw': [-1, 1]}
 
@@ -129,7 +129,7 @@ def new_seat_arr(sa):
         new_seat_arr(seata)
 
 new_seat_arr(seats_test)
-print(f"Part 1 test: {sum(x.count('#') for x in seat_arrangement)}")
+print(f"Part 2 test: {sum(x.count('#') for x in seat_arrangement)}")
 
 new_seat_arr(seats)
-print(f"Part 1: {sum(x.count('#') for x in seat_arrangement)}")
+print(f"Part 2: {sum(x.count('#') for x in seat_arrangement)}")
